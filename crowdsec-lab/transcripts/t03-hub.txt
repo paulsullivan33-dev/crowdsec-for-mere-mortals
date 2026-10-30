@@ -1,0 +1,6 @@
+$ cscli hub update
+Downloading /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/hub/.index.json
+
+$ cscli hub list (first 40 lines)
+Loaded: 171 parsers, 13 postoverflows, 790 scenarios, 10 contexts, 26 appsec-configs, 236 appsec-rules, 176 collections
+No items to display

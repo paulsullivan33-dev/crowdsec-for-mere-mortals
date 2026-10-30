@@ -1,0 +1,13 @@
+$ cscli bouncers add lab-firewall-bouncer
+API key for 'lab-firewall-bouncer':
+
+   <the API key cscli printed — shown once, a lab secret redacted here>
+
+Please keep this key since you will not be able to retrieve it!
+
+$ cscli bouncers list
+----------------------------------------------------------------------------------
+ Name                  IP Address  Valid  Last API pull  Type  Version  Auth Type 
+----------------------------------------------------------------------------------
+ lab-firewall-bouncer              ✔️                                    api-key   
+----------------------------------------------------------------------------------

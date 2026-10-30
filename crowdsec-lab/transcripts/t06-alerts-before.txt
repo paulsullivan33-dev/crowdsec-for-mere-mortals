@@ -1,0 +1,2 @@
+$ cscli alerts list   (after only two failures from the busiest address)
+No active alerts

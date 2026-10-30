@@ -1,0 +1,93 @@
+$ cscli collections install crowdsecurity/linux
+Action plan:
+📥 download
+ collections: crowdsecurity/linux (0.4), crowdsecurity/sshd (0.9), crowdsecurity/whitelist-good-actors (0.4)
+ contexts: crowdsecurity/bf_base (0.1)
+ scenarios: crowdsecurity/ssh-bf (0.3), crowdsecurity/ssh-cve-2024-6387 (0.2), crowdsecurity/ssh-generic-test (0.3), crowdsecurity/ssh-refused-conn (0.1), crowdsecurity/ssh-slow-bf (0.4), crowdsecurity/ssh-time-based-bf (0.3)
+ postoverflows: crowdsecurity/cdn-whitelist (0.5), crowdsecurity/google-special-crawlers-whitelist (0.1), crowdsecurity/rdns (0.4), crowdsecurity/seo-bots-whitelist (0.5)
+ parsers: crowdsecurity/dateparse-enrich (0.2), crowdsecurity/geoip-enrich (0.5), crowdsecurity/public-dns-allowlist (0.1), crowdsecurity/sshd-logs (3.1), crowdsecurity/sshd-success-logs (0.2), crowdsecurity/syslog-logs (1.1)
+✅ enable
+ collections: crowdsecurity/linux, crowdsecurity/sshd, crowdsecurity/whitelist-good-actors
+ contexts: crowdsecurity/bf_base
+ scenarios: crowdsecurity/ssh-bf, crowdsecurity/ssh-cve-2024-6387, crowdsecurity/ssh-generic-test, crowdsecurity/ssh-refused-conn, crowdsecurity/ssh-slow-bf, crowdsecurity/ssh-time-based-bf
+ postoverflows: crowdsecurity/cdn-whitelist, crowdsecurity/google-special-crawlers-whitelist, crowdsecurity/rdns, crowdsecurity/seo-bots-whitelist
+ parsers: crowdsecurity/dateparse-enrich, crowdsecurity/geoip-enrich, crowdsecurity/public-dns-allowlist, crowdsecurity/sshd-logs, crowdsecurity/sshd-success-logs, crowdsecurity/syslog-logs
+
+downloading parsers:crowdsecurity/syslog-logs
+downloading parsers:crowdsecurity/geoip-enrich
+downloading https://hub-data.crowdsec.net/mmdb_update/GeoLite2-City.mmdb
+downloading https://hub-data.crowdsec.net/mmdb_update/GeoLite2-ASN.mmdb
+downloading parsers:crowdsecurity/dateparse-enrich
+downloading parsers:crowdsecurity/sshd-logs
+downloading parsers:crowdsecurity/sshd-success-logs
+downloading scenarios:crowdsecurity/ssh-bf
+downloading scenarios:crowdsecurity/ssh-slow-bf
+downloading scenarios:crowdsecurity/ssh-time-based-bf
+downloading scenarios:crowdsecurity/ssh-cve-2024-6387
+downloading scenarios:crowdsecurity/ssh-refused-conn
+downloading scenarios:crowdsecurity/ssh-generic-test
+downloading contexts:crowdsecurity/bf_base
+downloading collections:crowdsecurity/sshd
+downloading parsers:crowdsecurity/public-dns-allowlist
+downloading postoverflows:crowdsecurity/seo-bots-whitelist
+downloading https://hub-data.crowdsec.net/whitelists/benign_bots/search_engine_crawlers/rdns_seo_bots.txt
+downloading https://hub-data.crowdsec.net/whitelists/benign_bots/search_engine_crawlers/rnds_seo_bots.regex
+downloading https://hub-data.crowdsec.net/whitelists/benign_bots/search_engine_crawlers/ip_seo_bots.txt
+downloading postoverflows:crowdsecurity/cdn-whitelist
+downloading https://hub-data.crowdsec.net/whitelists/cdn_providers/cloudflare_ips.txt
+downloading https://hub-data.crowdsec.net/whitelists/cdn_providers/cloudflare_ip6s.txt
+downloading postoverflows:crowdsecurity/rdns
+downloading postoverflows:crowdsecurity/google-special-crawlers-whitelist
+downloading https://hub-data.crowdsec.net/whitelists/benign_bots/search_engine_crawlers/google_special_crawlers_ipv4.txt
+downloading https://hub-data.crowdsec.net/whitelists/benign_bots/search_engine_crawlers/google_special_crawlers_ipv6.txt
+downloading collections:crowdsecurity/whitelist-good-actors
+downloading collections:crowdsecurity/linux
+enabling parsers:crowdsecurity/syslog-logs
+enabling parsers:crowdsecurity/geoip-enrich
+enabling parsers:crowdsecurity/dateparse-enrich
+enabling parsers:crowdsecurity/sshd-logs
+enabling parsers:crowdsecurity/sshd-success-logs
+enabling scenarios:crowdsecurity/ssh-bf
+enabling scenarios:crowdsecurity/ssh-slow-bf
+enabling scenarios:crowdsecurity/ssh-time-based-bf
+enabling scenarios:crowdsecurity/ssh-cve-2024-6387
+enabling scenarios:crowdsecurity/ssh-refused-conn
+enabling scenarios:crowdsecurity/ssh-generic-test
+enabling contexts:crowdsecurity/bf_base
+enabling collections:crowdsecurity/sshd
+enabling parsers:crowdsecurity/public-dns-allowlist
+enabling postoverflows:crowdsecurity/seo-bots-whitelist
+enabling postoverflows:crowdsecurity/cdn-whitelist
+enabling postoverflows:crowdsecurity/rdns
+enabling postoverflows:crowdsecurity/google-special-crawlers-whitelist
+enabling collections:crowdsecurity/whitelist-good-actors
+enabling collections:crowdsecurity/linux
+
+Run 'sudo systemctl reload crowdsec' for the new configuration to be effective.
+
+$ cscli collections install crowdsecurity/sshd
+Nothing to install or remove.
+
+$ cscli collections list
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ COLLECTIONS                                                                                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Name                                 📦 Status   Version  Local Path                                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ crowdsecurity/linux                  ✔️  enabled  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/linux.yaml                 
+ crowdsecurity/sshd                   ✔️  enabled  0.9      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/sshd.yaml                  
+ crowdsecurity/whitelist-good-actors  ✔️  enabled  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/whitelist-good-actors.yaml 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+$ cscli scenarios list | grep -i ssh
+ crowdsecurity/ssh-bf             ✔️  enabled  0.3      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-bf.yaml            
+ crowdsecurity/ssh-cve-2024-6387  ✔️  enabled  0.2      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-cve-2024-6387.yaml 
+ crowdsecurity/ssh-generic-test   ✔️  enabled  0.3      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-generic-test.yaml  
+ crowdsecurity/ssh-refused-conn   ✔️  enabled  0.1      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-refused-conn.yaml  
+ crowdsecurity/ssh-slow-bf        ✔️  enabled  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-slow-bf.yaml       
+ crowdsecurity/ssh-time-based-bf  ✔️  enabled  0.3      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/scenarios/ssh-time-based-bf.yaml 
+
+$ cscli parsers list | grep -Ei "sshd|syslog"
+ crowdsecurity/sshd-logs             ✔️  enabled  3.1      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/parsers/s01-parse/sshd-logs.yaml             
+ crowdsecurity/sshd-success-logs     ✔️  enabled  0.2      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/parsers/s01-parse/sshd-success-logs.yaml     
+ crowdsecurity/syslog-logs           ✔️  enabled  1.1      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/parsers/s00-raw/syslog-logs.yaml             

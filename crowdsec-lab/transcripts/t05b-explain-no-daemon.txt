@@ -1,0 +1,5 @@
+$ cscli explain --type syslog --file sample-lines.txt   (with the daemon stopped)
+time="2026-10-30T22:35:15Z" level=info msg="Loaded 9 scenarios"
+time="2026-10-30T22:35:15Z" level=fatal msg="crowdsec init: while initializing LAPIClient: authenticate watcher (0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72): Post \"http://127.0.0.1:18085/v1/watchers/login\": performing jwt auth: dial tcp 127.0.0.1:18085: connect: connection refused"
+
+Error: cscli explain: fail to run crowdsec for test: exit status 1

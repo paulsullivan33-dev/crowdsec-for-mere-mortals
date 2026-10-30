@@ -1,0 +1,36 @@
+$ cscli alerts inspect 1
+
+################################################################################################
+
+ - ID           : 1
+ - Date         : 2026-10-30T22:31:30Z
+ - Machine      : 0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72
+ - Simulation   : false
+ - Remediation  : true
+ - Kind         : crowdsec
+ - Reason       : crowdsecurity/ssh-bf
+ - Events Count : 6
+ - Scope:Value  : Ip:203.0.113.17
+ - Country      : 
+ - AS           : 
+ - Begin        : 2026-10-30T22:31:25Z
+ - End          : 2026-10-30T22:31:29Z
+ - UUID         : 237d2749-575e-465b-a2e4-41b7ac7f60fd
+
++-------------------------------------------------------------------+
+| Active Decisions                                                  |
++----+-----------------+--------+------------+----------------------+
+| ID |   scope:value   | action | expiration |      created_at      |
++----+-----------------+--------+------------+----------------------+
+| 1  | Ip:203.0.113.17 | ban    | 3h59m54s   | 2026-10-30T22:31:30Z |
++----+-----------------+--------+------------+----------------------+
+
+ - Context  :
++-------------+--------+
+|     Key     |  Value |
++-------------+--------+
+| target_user | admin  |
+| target_user | oracle |
+| target_user | test   |
+| target_user | guest  |
++-------------+--------+

@@ -1,0 +1,26 @@
+$ crowdsec -c config.yaml   (started in the background; its own log file, first lines)
+time="2026-10-30T22:30:35Z" level=info msg="push and pull to Central API disabled"
+time="2026-10-30T22:30:35Z" level=info msg="Enabled feature flags: none"
+time="2026-10-30T22:30:35Z" level=info msg="Crowdsec v1.8.2-debian-pragmatic-amd64-3d369d64"
+time="2026-10-30T22:30:35Z" level=warning msg="Communication with CrowdSec Central API disabled from configuration file"
+time="2026-10-30T22:30:35Z" level=info msg="push and pull to Central API disabled"
+time="2026-10-30T22:30:35Z" level=info msg="gocron: new scheduler created" module=db
+time="2026-10-30T22:30:35Z" level=info msg="gocron: scheduler started" module=db
+time="2026-10-30T22:30:35Z" level=info msg="initiating plugin broker"
+time="2026-10-30T22:30:35Z" level=debug msg="starting plugin" args="[/home/hatch/workspace/crowdsec-labwork/rootfs/usr/lib/crowdsec/plugins/notification-file]" module=plugin path=/home/hatch/workspace/crowdsec-labwork/rootfs/usr/lib/crowdsec/plugins/notification-file
+time="2026-10-30T22:30:35Z" level=debug msg="plugin started" module=plugin path=/home/hatch/workspace/crowdsec-labwork/rootfs/usr/lib/crowdsec/plugins/notification-file pid=68996
+time="2026-10-30T22:30:35Z" level=debug msg="waiting for RPC address" module=plugin plugin=/home/hatch/workspace/crowdsec-labwork/rootfs/usr/lib/crowdsec/plugins/notification-file
+time="2026-10-30T22:30:35Z" level=debug msg="using plugin" module=plugin version=1
+time="2026-10-30T22:30:35Z" level=trace msg="waiting for stdio data" module=plugin
+time="2026-10-30T22:30:35Z" level=info msg="registered plugin file_default"
+time="2026-10-30T22:30:35Z" level=info msg="initiated plugin broker"
+time="2026-10-30T22:30:35Z" level=info msg="CrowdSec Local API listening on 127.0.0.1:18085"
+time="2026-10-30T22:30:35Z" level=info msg="Loading grok library /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/patterns"
+time="2026-10-30T22:30:38Z" level=info msg="Loading enrich plugins"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'GeoIpCity'"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'GeoIpASN'"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'IpToRange'"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'reverse_dns'"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'ParseDate'"
+time="2026-10-30T22:30:38Z" level=info msg="Successfully registered enricher 'UnmarshalJSON'"
+time="2026-10-30T22:30:38Z" level=info msg="Loading parsers from 6 files"

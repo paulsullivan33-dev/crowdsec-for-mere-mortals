@@ -1,0 +1,54 @@
+'$ cscli decisions add --ip 198.51.100.77 --duration 1h   (a decision for this address already existed from an earlier attempt; the bouncer log below shows the update arriving on a poll)'
+$ nft list set inet crowdsec crowdsec-blacklists
+Error: No such file or directory
+list set inet crowdsec crowdsec-blacklists
+              ^^^^^^^^
+table ip crowdsec {
+	counter processed {
+		packets 73 bytes 9061
+	}
+
+	counter crowdsec-blacklists-cscli {
+		packets 0 bytes 0
+	}
+
+	counter crowdsec-blacklists-crowdsec {
+		packets 0 bytes 0
+	}
+
+	set crowdsec-blacklists-cscli {
+		type ipv4_addr
+		flags timeout
+		elements = { 198.51.100.77 timeout 58m35s expires 58m17s831ms, 203.0.113.99 timeout 1h57m6s expires 1h56m48s831ms }
+	}
+
+	set crowdsec-blacklists-crowdsec {
+		type ipv4_addr
+		flags timeout
+		elements = { 203.0.113.17 timeout 3h57m1s expires 3h56m43s831ms }
+	}
+
+	chain crowdsec-chain-input {
+		type filter hook input priority filter; policy accept;
+		counter name "processed"
+		ip saddr @crowdsec-blacklists-cscli counter name "crowdsec-blacklists-cscli" drop
+		ip saddr @crowdsec-blacklists-crowdsec counter name "crowdsec-blacklists-crowdsec" drop
+	}
+}
+table ip6 crowdsec6 {
+	counter processed {
+		packets 0 bytes 0
+	}
+
+	chain crowdsec6-chain-input {
+		type filter hook input priority filter; policy accept;
+		counter name "processed"
+	}
+}
+
+$ tail of the bouncer log
+time="2026-10-30T22:34:28Z" level=info msg="Processing new and deleted decisions . . ."
+time="2026-10-30T22:34:28Z" level=info msg="Created set and rule for origin cscli and type ipv4_addr in chain crowdsec-chain-input"
+time="2026-10-30T22:34:28Z" level=info msg="Created set and rule for origin crowdsec and type ipv4_addr in chain crowdsec-chain-input"
+time="2026-10-30T22:34:28Z" level=info msg="3 decisions added"
+time="2026-10-30T22:34:38Z" level=info msg="1 decision added"

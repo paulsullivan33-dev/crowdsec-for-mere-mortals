@@ -1,0 +1,50 @@
+$ cscli collections remove crowdsecurity/sshd
+level=warning msg="crowdsecurity/sshd belongs to collections: [crowdsecurity/linux]"
+level=warning msg="Run 'sudo cscli collections remove crowdsecurity/sshd --force' if you want to force remove this collection"
+Nothing to install or remove.
+
+$ cscli collections list   (first attempt, above, refused: sshd is a member of the linux collection)
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ COLLECTIONS                                                                                                                                              
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Name                                 📦 Status   Version  Local Path                                                                                     
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ crowdsecurity/linux                  ✔️  enabled  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/linux.yaml                 
+ crowdsecurity/sshd                   ✔️  enabled  0.9      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/sshd.yaml                  
+ crowdsecurity/whitelist-good-actors  ✔️  enabled  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/whitelist-good-actors.yaml 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+$ cscli scenarios list | grep -ci ssh
+6
+$ cscli collections remove crowdsecurity/sshd --force
+Action plan:
+❌ disable
+ collections: crowdsecurity/sshd
+ contexts: crowdsecurity/bf_base
+ scenarios: crowdsecurity/ssh-bf, crowdsecurity/ssh-cve-2024-6387, crowdsecurity/ssh-generic-test, crowdsecurity/ssh-refused-conn, crowdsecurity/ssh-slow-bf, crowdsecurity/ssh-time-based-bf
+ parsers: crowdsecurity/sshd-logs, crowdsecurity/sshd-success-logs
+
+disabling parsers:crowdsecurity/sshd-logs
+disabling parsers:crowdsecurity/sshd-success-logs
+disabling scenarios:crowdsecurity/ssh-bf
+disabling scenarios:crowdsecurity/ssh-slow-bf
+disabling scenarios:crowdsecurity/ssh-time-based-bf
+disabling scenarios:crowdsecurity/ssh-cve-2024-6387
+disabling scenarios:crowdsecurity/ssh-refused-conn
+disabling scenarios:crowdsecurity/ssh-generic-test
+disabling contexts:crowdsecurity/bf_base
+disabling collections:crowdsecurity/sshd
+
+Run 'sudo systemctl reload crowdsec' for the new configuration to be effective.
+
+$ cscli collections list   (after the forced removal)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ COLLECTIONS                                                                                                                                                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Name                                 📦 Status           Version  Local Path                                                                                     
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ crowdsecurity/linux                  ⚠️  enabled,tainted  0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/linux.yaml                 
+ crowdsecurity/whitelist-good-actors  ✔️  enabled          0.4      /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/collections/whitelist-good-actors.yaml 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+$ ls /etc/crowdsec/scenarios/   (the lab equivalent path)

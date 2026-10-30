@@ -1,0 +1,18 @@
+$ cscli simulation status
+global simulation: disabled
+
+$ cscli simulation enable crowdsecurity/ssh-bf
+simulation mode for "crowdsecurity/ssh-bf" enabled
+
+Run 'sudo systemctl reload crowdsec' for the new configuration to be effective.
+
+$ cscli simulation status   (after enabling it for one scenario)
+global simulation: disabled
+
+Scenarios in simulation mode:
+  - crowdsecurity/ssh-bf
+
+$ cscli simulation disable crowdsecurity/ssh-bf
+simulation mode for "crowdsecurity/ssh-bf" disabled
+
+Run 'sudo systemctl reload crowdsec' for the new configuration to be effective.

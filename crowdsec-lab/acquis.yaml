@@ -1,0 +1,4 @@
+filenames:
+  - /home/hatch/workspace/crowdsec-labwork/run/logs/auth.log
+labels:
+  type: syslog

@@ -1,0 +1,14 @@
+$ cat crowdsec-firewall-bouncer.yaml   (the lab copy; key redacted)
+mode: nftables
+update_frequency: 5s
+log_mode: file
+log_dir: /home/hatch/workspace/crowdsec-labwork/run/var/log/
+log_level: info
+api_url: http://127.0.0.1:18085/
+api_key: <redacted>
+deny_action: DROP
+blacklists_ipv4: crowdsec-blacklists
+blacklists_ipv6: crowdsec6-blacklists
+
+$ crowdsec-firewall-bouncer -c crowdsec-firewall-bouncer.yaml -t   (config test)
+exit=0

@@ -1,0 +1,62 @@
+$ crowdsec --version
+version: v1.8.2-debian-pragmatic-amd64-3d369d64
+Codename: alphaga
+BuildDate: 2026-10-27_14:00:42
+GoVersion: 1.27.1
+Platform: linux
+libre2: C++
+User-Agent: crowdsec/v1.8.2-debian-pragmatic-amd64-3d369d64-linux
+Constraint_parser: >= 1.0, <= 3.0
+Constraint_scenario: >= 1.0, <= 3.0
+Constraint_api: v1
+Constraint_acquis: >= 1.0, < 2.0
+Built-in optional components: datasource_appsec, datasource_cloudwatch, datasource_docker, datasource_file, datasource_http, datasource_journalctl, datasource_k8s-audit, datasource_kafka, datasource_kinesis, datasource_kubernetes, datasource_loki, datasource_s3, datasource_syslog, datasource_victorialogs, datasource_wineventlog, db_mysql, db_postgres, db_sqlite
+Excluded components: cscli_setup
+
+$ cscli version
+version: v1.8.2-debian-pragmatic-amd64-3d369d64
+Codename: alphaga
+BuildDate: 2026-10-27_14:05:00
+GoVersion: 1.27.1
+Platform: linux
+libre2: C++
+User-Agent: crowdsec/v1.8.2-debian-pragmatic-amd64-3d369d64-linux
+Constraint_parser: >= 1.0, <= 3.0
+Constraint_scenario: >= 1.0, <= 3.0
+Constraint_api: v1
+Constraint_acquis: >= 1.0, < 2.0
+Built-in optional components: cscli_setup, datasource_appsec, datasource_cloudwatch, datasource_docker, datasource_file, datasource_http, datasource_journalctl, datasource_k8s-audit, datasource_kafka, datasource_kinesis, datasource_kubernetes, datasource_loki, datasource_s3, datasource_syslog, datasource_victorialogs, datasource_wineventlog, db_mysql, db_postgres, db_sqlite
+
+$ cscli --help (command list)
+Available Commands:
+  alerts                     Manage alerts
+  allowlists                 Manage centralized allowlists
+  appsec-configs             Manage hub appsec-configs
+  appsec-rules               Manage hub appsec-rules
+  bot                        Inspect bot detection: known-bot matching and fingerprint ids
+  bouncers                   Manage bouncers [requires local API]
+  capi                       Manage interaction with Central API (CAPI)
+  collections                Manage hub collections
+  completion                 Generate completion script
+  config                     Allows to view current config
+  console                    Manage interaction with Crowdsec console (https://app.crowdsec.net)
+  contexts                   Manage hub contexts
+  decisions                  Manage decisions
+  explain                    Explain log pipeline
+  help                       Help about any command
+  hub                        Manage hub index
+  hubtest                    Run functional tests on hub configurations
+  lapi                       Manage interaction with Local API (LAPI)
+  machines                   Manage local API machines [requires local API]
+  metrics                    Display crowdsec prometheus metrics.
+  notifications              Helper for notification plugin configuration
+  papi                       Manage interaction with Polling API (PAPI)
+  parsers                    Manage hub parsers
+  postoverflows              Manage hub postoverflows
+  scenarios                  Manage hub scenarios
+  setup                      Tools to configure crowdsec
+  simulation                 Manage simulation status of scenarios
+  support                    Provide commands to help during support
+  version                    Display version
+
+Flags:

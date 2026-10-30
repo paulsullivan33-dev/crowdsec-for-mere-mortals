@@ -1,0 +1,26 @@
+$ cscli decisions add --ip 203.0.113.99 --type ban --duration 2h --reason "Manual decision added from cscli (lab)"
+level=info msg="Decision successfully added"
+
+$ cscli decisions add --ip 203.0.113.200 --type captcha --duration 1h
+level=info msg="Decision successfully added"
+
+$ cscli decisions list
++----+----------+------------------+--------------------------------------------------------------+---------+---------+----+--------+------------+----------+
+| ID |  Source  |    Scope:Value   |                            Reason                            |  Action | Country | AS | Events | expiration | Alert ID |
++----+----------+------------------+--------------------------------------------------------------+---------+---------+----+--------+------------+----------+
+| 3  | cscli    | Ip:203.0.113.200 | manual 'captcha' from                                        | captcha |         |    | 1      | 59m59s     | 3        |
+|    |          |                  | '0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72'           |         |         |    |        |            |          |
+| 2  | cscli    | Ip:203.0.113.99  | Manual decision added from cscli (lab)                       | ban     |         |    | 1      | 1h59m59s   | 2        |
+| 1  | crowdsec | Ip:203.0.113.17  | crowdsecurity/ssh-bf                                         | ban     |         |    | 6      | 3h59m54s   | 1        |
++----+----------+------------------+--------------------------------------------------------------+---------+---------+----+--------+------------+----------+
+
+$ cscli decisions delete --ip 203.0.113.200
+level=info msg="1 decision(s) deleted"
+
+$ cscli decisions list   (after the delete)
++----+----------+-----------------+----------------------------------------+--------+---------+----+--------+------------+----------+
+| ID |  Source  |   Scope:Value   |                 Reason                 | Action | Country | AS | Events | expiration | Alert ID |
++----+----------+-----------------+----------------------------------------+--------+---------+----+--------+------------+----------+
+| 2  | cscli    | Ip:203.0.113.99 | Manual decision added from cscli (lab) | ban    |         |    | 1      | 1h59m59s   | 2        |
+| 1  | crowdsec | Ip:203.0.113.17 | crowdsecurity/ssh-bf                   | ban    |         |    | 6      | 3h59m53s   | 1        |
++----+----------+-----------------+----------------------------------------+--------+---------+----+--------+------------+----------+

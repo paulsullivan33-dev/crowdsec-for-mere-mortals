@@ -1,0 +1,29 @@
+How the lab obtained CrowdSec (nothing was installed system-wide)
+
+Source: the project's official package repository on packagecloud, for Ubuntu 24.04 (noble):
+  https://packagecloud.io/crowdsec/crowdsec/ubuntu  (dists/noble/main/binary-amd64/Packages.gz)
+
+Downloaded with curl through the sandbox HTTP proxy, then unpacked with dpkg-deb -x
+into a scratch tree and run from there. The repository index lists for each package the
+SHA-256 the download must match; both downloads were checked against it:
+
+  crowdsec_1.8.2_amd64.deb
+    size    82792616 bytes
+    sha256  d534ad21e6eed3d82a8fd748fa19f34970e95bfccd99735c0ebebcbad1e6366e  (matches the index)
+  crowdsec-firewall-bouncer-nftables_0.0.36_amd64.deb
+    size    4591828 bytes (index)
+    sha256  fb3f38d222793cd031dac7e2b33076033a05c5bb476f323129d431cdc8b69b78  (matches the index)
+
+A first attempt at downloading in parallel produced a truncated crowdsec.deb
+(47186232 bytes, wrong hash). It was discarded, re-downloaded on its own, and
+only used once its hash matched. Hashes first, always.
+
+The sandbox is shared and its holder has no reason to let a guide rewrite the
+system, so the .deb route mirrors what an install would lay down: /usr/bin, /etc/crowdsec,
+/usr/lib/crowdsec/plugins. The lab then ran the binaries with a config file whose paths
+were rewritten into the scratch tree, and (for the parts that open sockets or touch a
+firewall) inside a throwaway network namespace made with: unshare -Urn
+
+On a real machine none of this scaffolding exists: apt install crowdsec puts the same
+files in the same places, and the daemon runs under systemd. Every command in the
+guide was run against the extracted copy, unchanged.

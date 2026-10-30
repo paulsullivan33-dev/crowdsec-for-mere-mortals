@@ -1,0 +1,24 @@
+$ cscli machines add --auto
+Error: cscli machines add: failed to load Local API: loading online client credentials: open /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/online_api_credentials.yaml: no such file or directory
+
+$ cat local_api_credentials.yaml (password redacted in this transcript)
+sed: can't read run/etc/crowdsec/local_api_credentials.yaml: No such file or directory
+
+$ cscli machines list
+Error: cscli machines list: failed to load Local API: loading online client credentials: open /home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/online_api_credentials.yaml: no such file or directory
+$ touch online_api_credentials.yaml   # an empty file means "not registered with the Central API"
+$ cscli machines add --auto
+Machine '0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72' successfully added to the local API.
+API credentials written to '/home/hatch/workspace/crowdsec-labwork/run/etc/crowdsec/local_api_credentials.yaml'.
+
+$ cat local_api_credentials.yaml (password redacted in this transcript)
+url: http://127.0.0.1:18085
+login: 0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72
+password: <redacted — the lab machine password, generated at registration>
+
+$ cscli machines list
+----------------------------------------------------------------------------------------------------------------------------------------------
+ Name                                              IP Address  Last Update           Status  Version  OS  Auth Type  Last Heartbeat  Features 
+----------------------------------------------------------------------------------------------------------------------------------------------
+ 0a3408554c4d4e6dbc67faae93a57b41y4iqFAIhDTwt0b72              2026-10-30T22:27:44Z  ✔️                ?   password   ⚠️ -                      
+----------------------------------------------------------------------------------------------------------------------------------------------

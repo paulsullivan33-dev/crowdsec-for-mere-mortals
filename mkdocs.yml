@@ -1,0 +1,29 @@
+site_name: CrowdSec for Mere Mortals
+site_description: A collaborative intrusion prevention system that watches your logs, recognises attacks, and bans the attackers in your firewall. Installing the agent, the hub rulebook explained, a real brute-force attack caught step by step, decisions and bouncers, and what joining the crowd really sends and receives, with the limits stated plainly.
+site_url: https://paulsullivan33-dev.github.io/crowdsec-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text CC BY 4.0, code MIT'
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What CrowdSec Is: what-crowdsec-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing CrowdSec: installing-crowdsec.md
+  - The Hub — Parsers, Scenarios and Collections: the-hub.md
+  - Watching SSH — Your First Alert: watching-ssh.md
+  - The Local API and cscli: the-local-api-and-cscli.md
+  - Decisions: decisions.md
+  - Profiles and Notifications: profiles-and-notifications.md
+  - Bouncers — Making Decisions Bite: bouncers.md
+  - The Central API and the Console: the-central-api-and-the-console.md
+  - Keeping It Updated, and Removing It: keeping-it-updated-and-removing-it.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md

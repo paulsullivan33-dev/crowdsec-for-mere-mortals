@@ -1,0 +1,2 @@
+$ nft list ruleset   (after the bouncer stops: it removes its own tables)
+(no output above the note means the tables are gone)

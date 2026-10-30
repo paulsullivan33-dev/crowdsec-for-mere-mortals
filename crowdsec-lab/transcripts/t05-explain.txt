@@ -1,0 +1,247 @@
+$ cscli explain --type syslog -v --file sample-lines.txt   (3 failures + 1 success; needs the daemon up)
+line: Oct 30 22:30:05 labhost sshd[2422]: Accepted password for marina from 192.0.2.44 port 51300 ssh2
+	├ s00-raw
+	|	└ 🟢 crowdsecurity/syslog-logs (+12 ~9)
+	|		└ update evt.ExpectMode : %!s(int=0) -> 1
+	|		└ update evt.Stage :  -> s01-parse
+	|		└ update evt.Line.Raw :  -> Oct 30 22:30:05 labhost sshd[2422]: Accepted password for marina from 192.0.2.44 port 51300 ssh2
+	|		└ update evt.Line.Src :  -> /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ update evt.Line.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.41464167 +0000 UTC
+	|		└ create evt.Line.Labels.type : syslog
+	|		└ update evt.Line.Process : %!s(bool=false) -> true
+	|		└ update evt.Line.Module :  -> file
+	|		└ create evt.Parsed.facility : 
+	|		└ create evt.Parsed.logsource : syslog
+	|		└ create evt.Parsed.message : Accepted password for marina from 192.0.2.44 port 51300 ssh2
+	|		└ create evt.Parsed.pid : 2422
+	|		└ create evt.Parsed.priority : 
+	|		└ create evt.Parsed.program : sshd
+	|		└ create evt.Parsed.timestamp : Oct 30 22:30:05
+	|		└ create evt.Parsed.timestamp8601 : 
+	|		└ update evt.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.415692957 +0000 UTC
+	|		└ update evt.StrTime :  -> Oct 30 22:30:05
+	|		└ create evt.Meta.datasource_type : file
+	|		└ create evt.Meta.machine : labhost
+	|		└ create evt.Meta.datasource_path : /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	├ s01-parse
+	|	├ 🔴 crowdsecurity/sshd-logs
+	|	└ 🟢 crowdsecurity/sshd-success-logs (+8 ~1)
+	|		└ update evt.Stage : s01-parse -> s02-enrich
+	|		└ create evt.Parsed.sshd_auth_user : marina
+	|		└ create evt.Parsed.sshd_client_ip : 192.0.2.44
+	|		└ create evt.Parsed.sshd_client_port : 51300
+	|		└ create evt.Parsed.sshd_trail : 
+	|		└ create evt.Meta.source_ip : 192.0.2.44
+	|		└ create evt.Meta.user : marina
+	|		└ create evt.Meta.log_type : auth_success
+	|		└ create evt.Meta.service : ssh
+	├ s02-enrich
+	|	├ 🟢 crowdsecurity/dateparse-enrich (+2 ~2)
+	|		├ create evt.Enriched.MarshaledTime : 2026-10-30T22:30:05Z
+	|		├ update evt.Time : 2026-10-30 22:31:24.415692957 +0000 UTC -> 2026-10-30 22:30:05 +0000 UTC
+	|		├ update evt.MarshaledTime :  -> 2026-10-30T22:30:05Z
+	|		├ create evt.Meta.timestamp : 2026-10-30T22:30:05Z
+	|	├ 🟢 crowdsecurity/geoip-enrich (+9)
+	|		├ create evt.Enriched.IsoCode : 
+	|		├ create evt.Enriched.Latitude : 0.000000
+	|		├ create evt.Enriched.Longitude : 0.000000
+	|		├ create evt.Enriched.ASNNumber : 0
+	|		├ create evt.Enriched.ASNOrg : 
+	|		├ create evt.Enriched.ASNumber : 0
+	|		├ create evt.Enriched.IsInEU : false
+	|		├ create evt.Meta.ASNNumber : 0
+	|		├ create evt.Meta.IsInEU : false
+	|	└ 🟢 crowdsecurity/public-dns-allowlist (unchanged)
+	├-------- parser success 🟢
+	├ Scenarios
+		├ 🟢 crowdsecurity/ssh-time-based-bf
+		└ 🟢 crowdsecurity/ssh-time-based-bf_user-enum
+
+line: Oct 30 22:30:01 labhost sshd[2417]: Failed password for invalid user admin from 203.0.113.17 port 51234 ssh2
+	├ s00-raw
+	|	└ 🟢 crowdsecurity/syslog-logs (+12 ~9)
+	|		└ update evt.ExpectMode : %!s(int=0) -> 1
+	|		└ update evt.Stage :  -> s01-parse
+	|		└ update evt.Line.Raw :  -> Oct 30 22:30:01 labhost sshd[2417]: Failed password for invalid user admin from 203.0.113.17 port 51234 ssh2
+	|		└ update evt.Line.Src :  -> /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ update evt.Line.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.377107442 +0000 UTC
+	|		└ create evt.Line.Labels.type : syslog
+	|		└ update evt.Line.Process : %!s(bool=false) -> true
+	|		└ update evt.Line.Module :  -> file
+	|		└ create evt.Parsed.program : sshd
+	|		└ create evt.Parsed.timestamp : Oct 30 22:30:01
+	|		└ create evt.Parsed.timestamp8601 : 
+	|		└ create evt.Parsed.facility : 
+	|		└ create evt.Parsed.logsource : syslog
+	|		└ create evt.Parsed.message : Failed password for invalid user admin from 203.0.113.17 port 51234 ssh2
+	|		└ create evt.Parsed.pid : 2417
+	|		└ create evt.Parsed.priority : 
+	|		└ update evt.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.378307212 +0000 UTC
+	|		└ update evt.StrTime :  -> Oct 30 22:30:01
+	|		└ create evt.Meta.machine : labhost
+	|		└ create evt.Meta.datasource_path : /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ create evt.Meta.datasource_type : file
+	├ s01-parse
+	|	├ 🟢 crowdsecurity/sshd-logs (+8 ~1)
+	|		├ update evt.Stage : s01-parse -> s02-enrich
+	|		├ create evt.Parsed.sshd_client_ip : 203.0.113.17
+	|		├ create evt.Parsed.sshd_invalid_user : admin
+	|		├ create evt.Parsed.sshd_protocol : ssh2
+	|		├ create evt.Parsed.sshd_port : 51234
+	|		├ create evt.Meta.log_type : ssh_failed-auth
+	|		├ create evt.Meta.service : ssh
+	|		├ create evt.Meta.source_ip : 203.0.113.17
+	|		├ create evt.Meta.target_user : admin
+	|	└ 🔴 crowdsecurity/sshd-success-logs
+	├ s02-enrich
+	|	├ 🟢 crowdsecurity/dateparse-enrich (+2 ~2)
+	|		├ create evt.Enriched.MarshaledTime : 2026-10-30T22:30:01Z
+	|		├ update evt.Time : 2026-10-30 22:31:24.378307212 +0000 UTC -> 2026-10-30 22:30:01 +0000 UTC
+	|		├ update evt.MarshaledTime :  -> 2026-10-30T22:30:01Z
+	|		├ create evt.Meta.timestamp : 2026-10-30T22:30:01Z
+	|	├ 🟢 crowdsecurity/geoip-enrich (+9)
+	|		├ create evt.Enriched.ASNNumber : 0
+	|		├ create evt.Enriched.ASNOrg : 
+	|		├ create evt.Enriched.ASNumber : 0
+	|		├ create evt.Enriched.IsInEU : false
+	|		├ create evt.Enriched.IsoCode : 
+	|		├ create evt.Enriched.Latitude : 0.000000
+	|		├ create evt.Enriched.Longitude : 0.000000
+	|		├ create evt.Meta.ASNNumber : 0
+	|		├ create evt.Meta.IsInEU : false
+	|	└ 🟢 crowdsecurity/public-dns-allowlist (unchanged)
+	├-------- parser success 🟢
+	├ Scenarios
+		├ 🟢 crowdsecurity/ssh-bf
+		├ 🟢 crowdsecurity/ssh-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-slow-bf
+		├ 🟢 crowdsecurity/ssh-slow-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-time-based-bf
+		└ 🟢 crowdsecurity/ssh-time-based-bf_user-enum
+
+line: Oct 30 22:30:02 labhost sshd[2419]: Failed password for invalid user oracle from 203.0.113.17 port 51236 ssh2
+	├ s00-raw
+	|	└ 🟢 crowdsecurity/syslog-logs (+12 ~9)
+	|		└ update evt.ExpectMode : %!s(int=0) -> 1
+	|		└ update evt.Stage :  -> s01-parse
+	|		└ update evt.Line.Raw :  -> Oct 30 22:30:02 labhost sshd[2419]: Failed password for invalid user oracle from 203.0.113.17 port 51236 ssh2
+	|		└ update evt.Line.Src :  -> /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ update evt.Line.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.378472741 +0000 UTC
+	|		└ create evt.Line.Labels.type : syslog
+	|		└ update evt.Line.Process : %!s(bool=false) -> true
+	|		└ update evt.Line.Module :  -> file
+	|		└ create evt.Parsed.message : Failed password for invalid user oracle from 203.0.113.17 port 51236 ssh2
+	|		└ create evt.Parsed.pid : 2419
+	|		└ create evt.Parsed.priority : 
+	|		└ create evt.Parsed.program : sshd
+	|		└ create evt.Parsed.timestamp : Oct 30 22:30:02
+	|		└ create evt.Parsed.timestamp8601 : 
+	|		└ create evt.Parsed.facility : 
+	|		└ create evt.Parsed.logsource : syslog
+	|		└ update evt.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.412331503 +0000 UTC
+	|		└ update evt.StrTime :  -> Oct 30 22:30:02
+	|		└ create evt.Meta.machine : labhost
+	|		└ create evt.Meta.datasource_path : /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ create evt.Meta.datasource_type : file
+	├ s01-parse
+	|	├ 🟢 crowdsecurity/sshd-logs (+8 ~1)
+	|		├ update evt.Stage : s01-parse -> s02-enrich
+	|		├ create evt.Parsed.sshd_client_ip : 203.0.113.17
+	|		├ create evt.Parsed.sshd_protocol : ssh2
+	|		├ create evt.Parsed.sshd_invalid_user : oracle
+	|		├ create evt.Parsed.sshd_port : 51236
+	|		├ create evt.Meta.service : ssh
+	|		├ create evt.Meta.source_ip : 203.0.113.17
+	|		├ create evt.Meta.target_user : oracle
+	|		├ create evt.Meta.log_type : ssh_failed-auth
+	|	└ 🔴 crowdsecurity/sshd-success-logs
+	├ s02-enrich
+	|	├ 🟢 crowdsecurity/dateparse-enrich (+2 ~2)
+	|		├ create evt.Enriched.MarshaledTime : 2026-10-30T22:30:02Z
+	|		├ update evt.Time : 2026-10-30 22:31:24.412331503 +0000 UTC -> 2026-10-30 22:30:02 +0000 UTC
+	|		├ update evt.MarshaledTime :  -> 2026-10-30T22:30:02Z
+	|		├ create evt.Meta.timestamp : 2026-10-30T22:30:02Z
+	|	├ 🟢 crowdsecurity/geoip-enrich (+9)
+	|		├ create evt.Enriched.Latitude : 0.000000
+	|		├ create evt.Enriched.Longitude : 0.000000
+	|		├ create evt.Enriched.ASNNumber : 0
+	|		├ create evt.Enriched.ASNOrg : 
+	|		├ create evt.Enriched.ASNumber : 0
+	|		├ create evt.Enriched.IsInEU : false
+	|		├ create evt.Enriched.IsoCode : 
+	|		├ create evt.Meta.ASNNumber : 0
+	|		├ create evt.Meta.IsInEU : false
+	|	└ 🟢 crowdsecurity/public-dns-allowlist (unchanged)
+	├-------- parser success 🟢
+	├ Scenarios
+		├ 🟢 crowdsecurity/ssh-bf
+		├ 🟢 crowdsecurity/ssh-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-slow-bf
+		├ 🟢 crowdsecurity/ssh-slow-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-time-based-bf
+		└ 🟢 crowdsecurity/ssh-time-based-bf_user-enum
+
+line: Oct 30 22:30:04 labhost sshd[2421]: Failed password for root from 203.0.113.17 port 51238 ssh2
+	├ s00-raw
+	|	└ 🟢 crowdsecurity/syslog-logs (+12 ~9)
+	|		└ update evt.ExpectMode : %!s(int=0) -> 1
+	|		└ update evt.Stage :  -> s01-parse
+	|		└ update evt.Line.Raw :  -> Oct 30 22:30:04 labhost sshd[2421]: Failed password for root from 203.0.113.17 port 51238 ssh2
+	|		└ update evt.Line.Src :  -> /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ update evt.Line.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.412784633 +0000 UTC
+	|		└ create evt.Line.Labels.type : syslog
+	|		└ update evt.Line.Process : %!s(bool=false) -> true
+	|		└ update evt.Line.Module :  -> file
+	|		└ create evt.Parsed.pid : 2421
+	|		└ create evt.Parsed.priority : 
+	|		└ create evt.Parsed.program : sshd
+	|		└ create evt.Parsed.timestamp : Oct 30 22:30:04
+	|		└ create evt.Parsed.timestamp8601 : 
+	|		└ create evt.Parsed.facility : 
+	|		└ create evt.Parsed.logsource : syslog
+	|		└ create evt.Parsed.message : Failed password for root from 203.0.113.17 port 51238 ssh2
+	|		└ update evt.Time : 0001-01-01 00:00:00 +0000 UTC -> 2026-10-30 22:31:24.414507358 +0000 UTC
+	|		└ update evt.StrTime :  -> Oct 30 22:30:04
+	|		└ create evt.Meta.datasource_path : /home/hatch/workspace/crowdsec-labwork/run/transcripts/sample-lines.txt
+	|		└ create evt.Meta.datasource_type : file
+	|		└ create evt.Meta.machine : labhost
+	├ s01-parse
+	|	├ 🟢 crowdsecurity/sshd-logs (+9 ~1)
+	|		├ update evt.Stage : s01-parse -> s02-enrich
+	|		├ create evt.Parsed.sshd_auth_type : password
+	|		├ create evt.Parsed.sshd_client_ip : 203.0.113.17
+	|		├ create evt.Parsed.sshd_invalid_user : root
+	|		├ create evt.Parsed.sshd_protocol : ssh2
+	|		├ create evt.Parsed.sshd_port : 51238
+	|		├ create evt.Meta.log_type : ssh_failed-auth
+	|		├ create evt.Meta.service : ssh
+	|		├ create evt.Meta.source_ip : 203.0.113.17
+	|		├ create evt.Meta.target_user : root
+	|	└ 🔴 crowdsecurity/sshd-success-logs
+	├ s02-enrich
+	|	├ 🟢 crowdsecurity/dateparse-enrich (+2 ~2)
+	|		├ create evt.Enriched.MarshaledTime : 2026-10-30T22:30:04Z
+	|		├ update evt.Time : 2026-10-30 22:31:24.414507358 +0000 UTC -> 2026-10-30 22:30:04 +0000 UTC
+	|		├ update evt.MarshaledTime :  -> 2026-10-30T22:30:04Z
+	|		├ create evt.Meta.timestamp : 2026-10-30T22:30:04Z
+	|	├ 🟢 crowdsecurity/geoip-enrich (+9)
+	|		├ create evt.Enriched.Longitude : 0.000000
+	|		├ create evt.Enriched.ASNNumber : 0
+	|		├ create evt.Enriched.ASNOrg : 
+	|		├ create evt.Enriched.ASNumber : 0
+	|		├ create evt.Enriched.IsInEU : false
+	|		├ create evt.Enriched.IsoCode : 
+	|		├ create evt.Enriched.Latitude : 0.000000
+	|		├ create evt.Meta.IsInEU : false
+	|		├ create evt.Meta.ASNNumber : 0
+	|	└ 🟢 crowdsecurity/public-dns-allowlist (unchanged)
+	├-------- parser success 🟢
+	├ Scenarios
+		├ 🟢 crowdsecurity/ssh-bf
+		├ 🟢 crowdsecurity/ssh-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-slow-bf
+		├ 🟢 crowdsecurity/ssh-slow-bf_user-enum
+		├ 🟢 crowdsecurity/ssh-time-based-bf
+		└ 🟢 crowdsecurity/ssh-time-based-bf_user-enum
+
+exit=0

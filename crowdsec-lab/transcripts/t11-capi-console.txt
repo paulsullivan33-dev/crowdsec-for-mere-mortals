@@ -1,0 +1,21 @@
+$ cscli capi status
+Error: cscli capi status: the Central API (CAPI) must be configured with 'cscli capi register'
+
+$ cscli console status
++--------------------+----------------------------------------------+
+| Console connection |                                              |
++--------------------+----------------------------------------------+
+| Central API (CAPI) | ❌ not registered, see 'cscli capi register' |
++--------------------+----------------------------------------------+
++-------------+-----------+------------------------------------------------------+
+| Option Name | Activated | Description                                          |
++-------------+-----------+------------------------------------------------------+
+| custom      | ✅        | Forward alerts from custom scenarios to the console  |
+| manual      | ❌        | Forward manual decisions to the console              |
+| tainted     | ✅        | Forward alerts from tainted scenarios to the console |
+| context     | ❌        | Forward context with alerts to the console           |
++-------------+-----------+------------------------------------------------------+
+
+$ cscli console enroll   (called with no token)
+Error: cscli console enroll: the Central API (CAPI) must be configured with 'cscli capi register'
+exit=1
